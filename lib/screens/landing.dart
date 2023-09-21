@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/auth.dart';
 
 class LandingScreen extends StatelessWidget {
-  final Future<void> Function() loginAction;
-  final String loginError;
-
-  const LandingScreen(this.loginAction, this.loginError, {final Key? key}) : super(key: key);
+  const LandingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +12,11 @@ class LandingScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         ElevatedButton(
-          onPressed: () async {
-            await loginAction();
+          onPressed: () {
+            Provider.of<AuthModel>(context, listen: false).loginAction();
           },
           child: const Text('Login'),
         ),
-        Text(loginError),
       ],
     );
   }

@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:auth0_flutter/auth0_flutter.dart';
 import 'package:sportsvillesaarinen/screens/exercises.dart';
 import 'package:sportsvillesaarinen/screens/profile.dart';
 import 'package:sportsvillesaarinen/screens/routes.dart';
 import '../widgets/bottom_nav.dart';
 
 class HomeScreen extends StatelessWidget {
-  final Future<void> Function() logoutAction;
-  final UserProfile? user;
-
-  HomeScreen(this.logoutAction, this.user, {final Key? key}) : super(key: key);
-
   final _tab1navigatorKey = GlobalKey<NavigatorState>();
   final _tab2navigatorKey = GlobalKey<NavigatorState>();
   final _tab3navigatorKey = GlobalKey<NavigatorState>();
+
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +28,7 @@ class HomeScreen extends StatelessWidget {
           navigatorkey: _tab2navigatorKey,
         ),
         PersistentTabItem(
-          tab: ProfileScreen(logoutAction, user),
+          tab: const ProfileScreen(),
           icon: Icons.person_outline,
           title: 'Profile',
           navigatorkey: _tab3navigatorKey,
